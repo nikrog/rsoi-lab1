@@ -59,3 +59,5 @@
 3. ❗️С конца
    ноября [Heroku убирает Free Plan](https://help.heroku.com/RSBRUH58/removal-of-heroku-free-product-plans-faq),
    останутся только платные подписки. В связи с этим, дедлайн по сдаче ЛР #1 10 ноября. 
+
+Person Service Web Server: https://rsoi-lab1-artiukhin.onrender.com

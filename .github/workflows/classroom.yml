@@ -27,7 +27,7 @@ jobs:
 
       - name: Run Unit Tests
         run: |
-          pwd
+          pytest .
 
       - name: Deploy Project
         uses: ashishkujoy/render-deploy@v1.0.5

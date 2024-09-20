@@ -1,13 +1,16 @@
 import os
 import json
 import django
+import pytest
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "person_service.settings")
 django.setup()
 
 from django.test.client import RequestFactory
-from ..person_api.views import person_api
+from person_api.views import person_api
 
 
+@pytest.mark.django_db
 def test_get_all_persons():
     fact = RequestFactory()
     request = fact.get('api/v1/persons/')
@@ -15,6 +18,7 @@ def test_get_all_persons():
     assert response.status_code == 200
 
 
+@pytest.mark.django_db
 def test_get_existing_person_by_id():
     fact = RequestFactory()
     pers_data = {'name': 'pers1',
@@ -33,6 +37,7 @@ def test_get_existing_person_by_id():
     person_api(request, pers_id)
 
 
+@pytest.mark.django_db
 def test_get_not_existing_person_by_id():
     fact = RequestFactory()
     request = fact.get('api/v1/persons/')
@@ -40,6 +45,7 @@ def test_get_not_existing_person_by_id():
     assert response.status_code == 404
 
 
+@pytest.mark.django_db
 def test_post_person_positive():
     fact = RequestFactory()
     pers_data = {'name': 'pers1',
@@ -56,6 +62,7 @@ def test_post_person_positive():
     person_api(request, pers_id)
 
 
+@pytest.mark.django_db
 def test_post_person_invalid_data():
     fact = RequestFactory()
     pers_data = {'first_name': 'pers1'}
@@ -64,6 +71,7 @@ def test_post_person_invalid_data():
     assert response.status_code == 400
 
 
+@pytest.mark.django_db
 def delete_existing_person():
     fact = RequestFactory()
     pers_data = {'name': 'pers1',
@@ -80,6 +88,7 @@ def delete_existing_person():
     assert response.status_code == 204
 
 
+@pytest.mark.django_db
 def delete_not_existing_person():
     fact = RequestFactory()
     request = fact.delete('/api/v1/persons/')

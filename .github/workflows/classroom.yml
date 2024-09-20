@@ -29,14 +29,14 @@ jobs:
         run: |
           pytest .
 
-#      - name: Deploy Project
-#        uses: ashishkujoy/render-deploy@v1.0.5
-#        with:
-#          service-id:
-#          service-key:
-#          api-key:
-#          max-deployment-wait-ms: 3600000
-#          delay-in-ms: 10000
+      - name: Deploy Project
+        uses: ashishkujoy/render-deploy@v1.0.5
+        with:
+          service-id: srv-crmqanl6l47c739ulfe0
+          service-key: y_XF6yN1RW0
+          api-key: rnd_ccCHjoZccoTfCUsW6tHTObG9hun6
+          max-deployment-wait-ms: 3600000
+          delay-in-ms: 10000
 
       - name: Run API Tests
         uses: matt-ball/newman-action@master
